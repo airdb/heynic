@@ -80,7 +80,7 @@ contactFormAction = "#"
 # Google Analitycs
 googleAnalitycsID = "Your ID"
 # copyright
-copyright = "a theme by [themefisher.com](themefisher.com)"
+copyright = "Maintain by [airdb](https://www.airdb.com)"
 
   # Preloader
   [params.preloader]
