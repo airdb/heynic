@@ -1,6 +1,6 @@
 baseURL = "https://www.airdb.com/heynic/"
 languageCode = "en-us"
-title = "Parsa | Personal Blog Template"
+title = "HeyNic | Personal Blog"
 theme = "parsa-hugo"
 summaryLength = "10"
 paginate = 6
@@ -55,10 +55,14 @@ paginate = 6
   weight = 2
 
   [[menu.main]]
-  name = "Contact"
-  URL = "contact"
+  name = "MY RESUME"
+  URL = "about-me"
   weight = 3
 
+  [[menu.main]]
+  name = "Other"
+  URL = ""
+  weight = 4
 
 [params]
 logo = "images/logo.png"
