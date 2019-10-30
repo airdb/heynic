@@ -1,0 +1,25 @@
+name: Hugo
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Lint
+      run: |
+          echo pass
+
+    - name: Deploy
+      run: |
+          sudo apt-get install -y hugo
+          hugo
+          cd public/
+          git init
+          git config user.name "airdb-bot"
+          git config user.email "airdb-bot@airdb.com"
+          git add -A
+          git commit -m "Auto Update by actions"
+          git push --force "https://${{ secrets.GithubBotToken }}@github.com/${{ github.repository }}" master:gh-pages
+
