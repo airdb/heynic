@@ -121,8 +121,12 @@ copyright = "a theme by [themefisher.com](themefisher.com)"
   URL = "https://www.facebook.com/cheung.nic.31"
 
   [[params.social]]
-  icon = "fa-instagram"
+  icon = "ti-instagram"
   URL = "https://www.instagram.com/raycloud01/"
+
+  [[params.social]]
+  icon = "ti-dribbble"
+  URL = "https://dribbble.com/heynic"
 
   [[params.social]]
   icon = "ti-linkedin"
