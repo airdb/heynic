@@ -1,25 +1,30 @@
 name: Hugo
-on: [push]
+
+on:
+  push:
+    branches:
+    - master
+
 jobs:
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
+  build-deploy:
+    runs-on: ubuntu-18.04
     steps:
+    - uses: actions/checkout@master
+      # with:
+      #   submodules: true
 
-    - name: Lint
-      run: |
-          echo pass
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2.2.2
+      with:
+        hugo-version: '0.58.3'
+        # extended: true
+
+    - name: Build
+      run: hugo --minify
 
     - name: Deploy
-      run: |
-          sudo apt-get install -y hugo
-          hugo
-          cd public/
-          git init
-          git config user.name "airdb-bot"
-          git config user.email "airdb-bot@airdb.com"
-          git add -A
-          git commit -m "Auto Update by actions"
-          git push --force "https://${{ secrets.GithubBotToken }}@github.com/${{ github.repository }}" master:gh-pages
-
+      uses: peaceiris/actions-gh-pages@v2.5.0
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.GithubBotToken }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./public
