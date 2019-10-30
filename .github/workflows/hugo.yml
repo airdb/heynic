@@ -23,8 +23,11 @@ jobs:
       run: hugo --minify
 
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.5.0
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.GithubBotToken }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./public
+      run: |
+          cd public/
+          git init
+          git config user.name "airdb-bot"
+          git config user.email "airdb-bot@airdb.com"
+          git add -A
+          git commit -m "Auto Update by actions"
+          git push --force "https://${{ secrets.GithubBotToken }}@github.com/${{ github.repository }}" master:gh-pages
